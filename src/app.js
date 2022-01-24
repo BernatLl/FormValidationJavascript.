@@ -25,12 +25,10 @@ window.onload = function() {
     } else {
       ValidOk(email);
     }
-    const ps = /^(?=.*[a-z])(?=.*[A-Z])(?=.*d)(?=.*[@$!%*?&])[A-Za-zd@$!%*?&]{8,}$/;
+    //const ps = /^(?=.*[a-z])(?=.*[A-Z])(?=.*d)(?=.*[@$!%*?&])[A-Za-zd@$!%*?&]{8,}$/;
     if (!passwordValor) {
       ValidError(password, "Campo Vacío");
-    } else if (passwordValor.length < 8) {
-      ValidError(password, "El password debe contener al menos 8 caracteres");
-    } else if (!passwordValor.match(ps)) {
+    } else if (!validaPassword(passwordValor)) {
       ValidError(
         password,
         "Mínimo 8 caracteres, una letra mayúscula, una letra minúscula, un número y un carácter especial "
@@ -43,7 +41,7 @@ window.onload = function() {
     } else if (passwordValor !== password2Valor) {
       ValidError(password2, "El password no coincide");
     } else {
-      ValidOk();
+      ValidOk(password2);
     }
   };
 
@@ -60,6 +58,11 @@ window.onload = function() {
   const validaEmail = email => {
     return /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(
       email
+    );
+  };
+  const validaPassword = password => {
+    return /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/i.test(
+      password
     );
   };
 };
