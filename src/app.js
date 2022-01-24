@@ -25,18 +25,12 @@ window.onload = function() {
     } else {
       ValidOk(email);
     }
-
-    //const er =
-    // ^(?=.*[a-z])(?=.*[A-Z])(?=.*d)(?=.*[@$!%*?&])[A-Za-zd@$!%*?&]{8,}$;
+    const ps = /^(?=.*[a-z])(?=.*[A-Z])(?=.*d)(?=.*[@$!%*?&])[A-Za-zd@$!%*?&]{8,}$/;
     if (!passwordValor) {
       ValidError(password, "Campo Vacío");
     } else if (passwordValor.length < 8) {
       ValidError(password, "El password debe contener al menos 8 caracteres");
-    } else if (
-      !passwordValor.match(
-        "^(?=.*[a-z])(?=.*[A-Z])(?=.*d)(?=.*[@$!%*?&])[A-Za-zd@$!%*?&]{8,}$"
-      )
-    ) {
+    } else if (!passwordValor.match(ps)) {
       ValidError(
         password,
         "Mínimo 8 caracteres, una letra mayúscula, una letra minúscula, un número y un carácter especial "
@@ -59,7 +53,7 @@ window.onload = function() {
     warning.innerText = msj;
     formControl.className = "form-control error";
   };
-  const ValidOk = (input, msj) => {
+  const ValidOk = input => {
     const formControl = input.parentElement;
     formControl.className = "form-control ok";
   };
