@@ -13,9 +13,10 @@ body {
 }
 
 .contenedor {
-  background: #fff;
+  background: rgb(227, 206, 231);
   width: 400px;
   max-width: 100%;
+  border-radius: 5%;
 }
 
 #form {
