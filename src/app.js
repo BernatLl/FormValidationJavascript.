@@ -54,6 +54,7 @@ window.onload = function() {
   const ValidOk = input => {
     const formControl = input.parentElement;
     formControl.className = "form-control ok";
+    form.reset();
   };
   const validaEmail = email => {
     return /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(
